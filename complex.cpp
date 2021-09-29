@@ -1,4 +1,3 @@
-#include <iostream>
 #include <complex>
 #include "complex.hpp"
 
@@ -15,8 +14,8 @@ void check(double r1, double r2, double i1, double i2) {
 }
 
 int main() {
-	std::complex<double> comp_a = {3, 4}, comp_b = {5, -7}, comp_aa, comp_bb, comp_res;
-	complex_n a = {3, 4}, b = {5, -7}, aa, bb, res;
+	std::complex<double> comp_a = {3, 4}, comp_b = {5, -8}, comp_aa, comp_res;
+	complex_n a = {3, 4}, b = {5, -8}, aa, res;
 	
 	res = -a;
 	comp_res = -comp_a;

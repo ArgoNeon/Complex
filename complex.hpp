@@ -1,12 +1,9 @@
-#ifndef COMPLEX_HPP
-#define COMPLEX_HPP
-
-#include <cmath>
+#ifndef VMOS_COMPLEX_COMPLEX_HPP
+#define VMOS_COMPLEX_COMPLEX_HPP
 
 struct complex_n {
 	
 	complex_n();
-	complex_n(double);
 	complex_n(double, double);
 	complex_n(const complex_n &);
 

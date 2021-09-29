@@ -1,8 +1,7 @@
 #include "complex.hpp"
+#include <cmath>
 
 complex_n::complex_n(): re(0), im(0){};
-
-complex_n::complex_n(double a): re(a), im(0){};
 
 complex_n::complex_n(double a, double b): re(a), im(b){};
 
