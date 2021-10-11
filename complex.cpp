@@ -1,59 +1,105 @@
-#include <complex>
+#include <cmath>
+
 #include "complex.hpp"
 
-#define TEST1 check(res.re,real(comp_res), res.im, imag(comp_res))
-#define INIT aa = a;\
-comp_aa = comp_a;
-#define TEST2 check(aa.re,real(comp_aa), aa.im, imag(comp_aa))
+complex_n::complex_n(): re(0), im(0){};
 
-void check(double r1, double r2, double i1, double i2) {
-	if ((abs(r1 - r2) < 0.00001)&&(abs(i1 - i2) < 0.00001)) 
-		printf("Accepted\n");
-	else
-		printf("Failed\n");
+complex_n::complex_n(double a, double b): re(a), im(b){};
+
+complex_n::complex_n(const complex_n & a): re(a.re), im(a.im){};
+
+complex_n::~complex_n(){};
+
+complex_n& complex_n::operator=(const complex_n &other) {
+	re = other.re;
+	im = other.im;	
+	return *this;
 }
 
-int main() {
-	std::complex<double> comp_a = {3, 4}, comp_b = {5, -8}, comp_aa, comp_res;
-	complex_n a = {3, 4}, b = {5, -8}, aa, res;
-	
-	res = -a;
-	comp_res = -comp_a;
-	TEST1;
-	res = a + b;
-	comp_res = comp_a + comp_b;
-	TEST1;
-	res = a - b;
-	comp_res = comp_a - comp_b;
-	TEST1;
-	res = a * b;
-	comp_res = comp_a * comp_b;	
-	TEST1;
-	res = a / b;
-	comp_res = comp_a / comp_b;
-	TEST1;
-	INIT;
-	aa += b;
-	comp_aa += comp_b;
-	TEST2;
-	INIT;
-	aa -= b;
-	comp_aa -= comp_b;
-	TEST2;
-	INIT;
-	aa *= b;
-	comp_aa *= comp_b;
-	TEST2;
-	INIT;
-	aa /= b;
-	comp_aa /= comp_b;
-	TEST2;
-	res = 3 * a;
-	comp_res = 3.0 * comp_a;
-	TEST1;
-	res = a * 3;
-	comp_res = comp_a * 3.0;
-	TEST1;
+bool complex_n::operator==(const complex_n &other) const {
 
-	return 0;
+	return (re == other.re) && (im == other.im);	
+}
+
+ bool complex_n::operator!=(const complex_n &other) const {
+
+	return (re != other.re) || (im != other.im);
+}
+
+double complex_n::real() const {return re;}
+
+double complex_n::imag() const {return im;}
+
+double complex_n::arg() const {return atan(im / re);}
+
+double complex_n::abs() const {return sqrt(re * re + im * im);}
+
+double complex_n::sq_abs() const {return re * re + im * im;}
+
+complex_n complex_n::conjugate() const {return {re, -im};}
+
+complex_n& complex_n::operator+=(const complex_n &other) {
+	re += other.re;
+	im += other.im;
+	return *this;
+}
+
+complex_n& complex_n::operator-=(const complex_n &other) {
+	re -= other.re;
+	im -= other.im;
+	return *this;
+}
+
+complex_n& complex_n::operator*=(const complex_n &other) {
+	double n_re = re; 
+	re = re * other.re - im * other.im;  
+	im = im * other.re + n_re * other.im;
+	return *this;
+}
+
+complex_n& complex_n::operator/=(const complex_n &other) {
+	double n_re = re;
+	re = (re * other.re + im * other.im) / other.sq_abs();
+	im = (im * other.re - n_re * other.im) / other.sq_abs();
+	return *this;
+}
+
+complex_n complex_n::operator-() const{
+	
+	return {-re, -im};
+}
+
+complex_n complex_n::operator*(double other) const{
+	
+	return {re * other, im * other};
+}
+
+complex_n complex_n::operator+(const complex_n &other) const{
+
+	return {re + other.re, im + other.im};
+}
+
+complex_n complex_n::operator-(const complex_n &other) const{
+	
+	return {re - other.re, im - other.im};
+}
+
+complex_n complex_n::operator*(const complex_n &other) const{
+	
+        return {re * other.re - im * other.im, im * other.re + re * other.im};
+}
+
+complex_n complex_n::operator/(const complex_n &other) const{
+	
+	return {(re * other.re + im * other.im) / other.sq_abs(), (im * other.re - re * other.im) / other.sq_abs()};
+}
+
+complex_n complex_n::operator^(const double degree) const{
+	
+	return {pow(this->abs(), degree) * cos(this->arg() * degree), pow(this->abs(), degree) * sin(this->arg() * degree)}; 
+}
+
+complex_n operator*(double other, const complex_n comp) {
+
+	return {other * comp.re, other * comp.im};
 }

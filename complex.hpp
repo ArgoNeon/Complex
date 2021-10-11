@@ -4,26 +4,26 @@
 struct complex_n {
 	
 	complex_n();
-	complex_n(double, double);
-	complex_n(const complex_n &);
+	complex_n(double a, double b);
+	complex_n(const complex_n & a);
 
-	complex_n& operator=(const complex_n &);
-	bool operator==(const complex_n &) const;
-	bool operator!=(const complex_n &) const;
+	complex_n& operator=(const complex_n & other);
+	bool operator==(const complex_n & other) const;
+	bool operator!=(const complex_n & other) const;
 
-	complex_n& operator+=(const complex_n &);
-	complex_n& operator-=(const complex_n &);
-	complex_n& operator*=(const complex_n &);
-	complex_n& operator/=(const complex_n &);
+	complex_n& operator+=(const complex_n & other);
+	complex_n& operator-=(const complex_n & other);
+	complex_n& operator*=(const complex_n & other);
+	complex_n& operator/=(const complex_n & other);
 	
 	complex_n operator-() const;
-	complex_n operator*(double) const;
-	complex_n operator+(const complex_n &) const;
-	complex_n operator-(const complex_n &) const;
-	complex_n operator*(const complex_n &) const;
-	complex_n operator/(const complex_n &) const;
+	complex_n operator*(double other) const;
+	complex_n operator+(const complex_n & other) const;
+	complex_n operator-(const complex_n & other) const;
+	complex_n operator*(const complex_n & other) const;
+	complex_n operator/(const complex_n & other) const;
 	
-	complex_n operator^(const double) const;
+	complex_n operator^(const double degree) const;
 
 	complex_n conjugate() const;
 
@@ -39,6 +39,6 @@ struct complex_n {
 	double im;
 };
 
-complex_n operator*(double, const complex_n);
+complex_n operator*(double other, const complex_n comp);
 
-#endif
+#endif	//#define VMOS_COMPLEX_COMPLEX_HPP
