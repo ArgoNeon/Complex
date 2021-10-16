@@ -12,26 +12,33 @@ struct complex_n {
 	bool operator!=(const complex_n & other) const;
 
 	complex_n& operator+=(const complex_n & other);
+	complex_n& operator+=(double other);
 	complex_n& operator-=(const complex_n & other);
+	complex_n& operator-=(double other);
 	complex_n& operator*=(const complex_n & other);
+	complex_n& operator*=(double other);
 	complex_n& operator/=(const complex_n & other);
+	complex_n& operator/=(double other);
 	
 	complex_n operator-() const;
-	complex_n operator*(double other) const;
 	complex_n operator+(const complex_n & other) const;
+	complex_n operator+(double other) const;
 	complex_n operator-(const complex_n & other) const;
+	complex_n operator-(double other) const;
 	complex_n operator*(const complex_n & other) const;
+	complex_n operator*(double other) const;
 	complex_n operator/(const complex_n & other) const;
-	
-	complex_n operator^(const double degree) const;
+	complex_n operator/(double other) const;
 
-	complex_n conjugate() const;
-
+	void print() const;
 	double real() const;
 	double imag() const;
 	double arg() const;
 	double abs() const;
 	double sq_abs() const;
+	complex_n conjugate() const;
+	complex_n ln() const;
+	complex_n power(const double degree) const;
 	
 	~complex_n();
 
@@ -39,6 +46,9 @@ struct complex_n {
 	double im;
 };
 
+complex_n operator+(double other, const complex_n comp);
+complex_n operator-(double other, const complex_n comp);
 complex_n operator*(double other, const complex_n comp);
+complex_n operator/(double other, const complex_n comp);
 
 #endif	//#define VMOS_COMPLEX_COMPLEX_HPP
