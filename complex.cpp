@@ -59,6 +59,14 @@ complex_n complex_n::power(const double degree) const{
 	return {pow_this * cos(arg_this), pow_this * sin(arg_this)};
 }
 
+complex_n complex_n::power(const complex_n degree) const{
+	complex_n deg;
+	double ex;
+	deg = degree * ln();
+	ex = pow(M_E, deg.re);
+	return {ex * cos(deg.im), ex * sin(deg.im)};
+}
+
 complex_n& complex_n::operator+=(const complex_n &other) {
 	re += other.re;
 	im += other.im;

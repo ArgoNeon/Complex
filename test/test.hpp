@@ -22,6 +22,7 @@ void check_ddiv(double x, double y, double other);
 
 void check_ln(double x, double y); 
 void check_pow(double x, double y, double degree);
+void check_comp_pow(double x1, double y1, double x2, double y2);
 void check_arg(double x, double y);	
 void check_abs(double x, double y);
 

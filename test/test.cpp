@@ -160,6 +160,15 @@ void check_pow(double x, double y, double degree) {
 		std::cout<<"pow: Failed\n";
 }
 
+void check_comp_pow(double x1, double y1, double x2, double y2) {
+	std::complex<double> comp_a = {x1, y1}, comp_b = {x2, y2}, comp_res;
+	complex_n a = {x1, y1}, b = {x2, y2}, res;
+	comp_res = pow(comp_a, comp_b);
+	res = a.power(b);
+	if (!check(real(comp_res), imag(comp_res), res.re, res.im))
+		std::cout<<"comp_pow: Failed\n";
+}
+
 void check_arg(double x, double y) {
 	std::complex<double> comp_a = {x, y};
 	double comp_res, res;
@@ -204,4 +213,5 @@ void test(double x1, double y1, double x2, double y2, double other, double degre
 	check_divd(x1, y1, other);
 
 	check_pow(x1, y1, degree);
+	check_comp_pow(x1, y1, x2, y2);
 }

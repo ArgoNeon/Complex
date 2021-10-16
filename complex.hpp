@@ -39,7 +39,8 @@ struct complex_n {
 	complex_n conjugate() const;
 	complex_n ln() const;
 	complex_n power(const double degree) const;
-	
+	complex_n power(const complex_n degree) const;
+
 	~complex_n();
 
 	double re;
