@@ -28,4 +28,5 @@ void check_abs(double x, double y);
 
 void test(double x1, double y1, double x2, double y2, double other, double degree);
 void unit_test();
+
 #endif  //#define VMOS_COMPLEX_TEST_HPP
