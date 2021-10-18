@@ -53,7 +53,7 @@ complex_n complex_n::ln() const {
 
 }
 
-complex_n complex_n::power(const double degree) const{	
+complex_n complex_n::power(double degree) const{	
 	double arg_this = this->arg() * degree;
 	double pow_this = pow(this->abs(), degree);
 	return {pow_this * cos(arg_this), pow_this * sin(arg_this)};
