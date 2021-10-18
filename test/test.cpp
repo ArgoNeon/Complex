@@ -215,3 +215,10 @@ void test(double x1, double y1, double x2, double y2, double other, double degre
 	check_pow(x1, y1, degree);
 	check_comp_pow(x1, y1, x2, y2);
 }
+
+void unit_test() {
+	test(3, 4, 5, -8, 3, 5);
+	test(4, 7, 0, -9, -15, 12);
+	test(5, -3, 0, 0, 47, 35);
+	test(35, 56, -43, 32, 71, 30);
+}
